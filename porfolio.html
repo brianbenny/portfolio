@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brian Benny | Portfolio</title>
+
+<meta name="description" content="Brian Benny – Web Developer, Artist & Problem Solver. Portfolio showcasing skills, experience and projects.">
+<meta name="keywords" content="Brian Benny, portfolio, web developer, frontend developer">
+<meta name="author" content="Brian Benny">
+
+<link rel="icon" href="images/favicon.png">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+:root{
+  --bg:#0f172a;
+  --text:#e5e7eb;
+  --card:#1e293b;
+}
+body.light{
+  --bg:#f8fafc;
+  --text:#0f172a;
+  --card:#e2e8f0;
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui;
+  transition:.3s;
+  overflow-x:hidden;
+}
+
+/* PERFECT CENTER LAYOUT */
+.page{max-width:1200px;margin:0 auto;}
+.section{display:flex;justify-content:center;}
+.section-inner{width:100%;max-width:1100px;padding:0 24px;text-align:center;}
+
+/* Loader */
+#loader{
+  position:fixed;inset:0;background:#020617;
+  display:flex;align-items:center;justify-content:center;
+  z-index:9999;transition:.6s;
+}
+.loader-circle{
+  width:60px;height:60px;border:4px solid #1e293b;
+  border-top:4px solid #3b82f6;border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Cursor glow */
+.cursor-glow{
+  position:fixed;width:220px;height:220px;
+  background:radial-gradient(circle,rgba(59,130,246,.15),transparent 70%);
+  pointer-events:none;transform:translate(-50%,-50%);
+  z-index:0;
+}
+
+/* Hero image */
+.profile-photo{
+  width:18rem;height:18rem;border-radius:50%;
+  border:4px solid #3b82f6;object-fit:cover;
+  box-shadow:0 0 50px rgba(59,130,246,.6);
+  animation:float 6s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-18px)}
+}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(40px);transition:.8s;}
+.reveal.active{opacity:1;transform:none;}
+
+/* Cards */
+.card{background:var(--card);border:1px solid #1e293b;transition:.4s;}
+.card:hover{border-color:#3b82f6;transform:translateY(-6px);}
+
+/* Skills */
+.skill-bar{height:8px;background:#1e293b;border-radius:4px;overflow:hidden;}
+.skill-progress{height:100%;background:#3b82f6;transition:width 1.4s;}
+
+/* Mobile menu */
+#mobileMenu{display:none}
+#mobileMenu.active{display:block}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<div class="cursor-glow"></div>
+
+<!-- Loader -->
+<div id="loader"><div class="loader-circle"></div></div>
+
+<!-- NAV -->
+<nav class="fixed w-full bg-slate-900/80 backdrop-blur border-b border-slate-800 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="text-blue-500 font-bold tracking-wide">BRIAN BENNY</h1>
+
+    <div class="hidden md:flex space-x-8 text-sm uppercase">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="flex items-center space-x-4">
+      <button onclick="toggleTheme()"><i id="themeIcon" class="fas fa-moon"></i></button>
+      <button class="md:hidden text-xl" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="md:hidden bg-slate-900 px-6 pb-6 text-center">
+    <a href="#about" class="block py-2" onclick="toggleMenu()">About</a>
+    <a href="#services" class="block py-2" onclick="toggleMenu()">Services</a>
+    <a href="#resume" class="block py-2" onclick="toggleMenu()">Resume</a>
+    <a href="#contact" class="block py-2" onclick="toggleMenu()">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="about" class="section h-screen">
+  <div class="section-inner flex flex-col items-center justify-center gap-10 parallax-text">
+    <h1 class="text-5xl md:text-7xl font-bold">
+      I'm <span class="text-blue-500">Brian Benny</span>
+    </h1>
+    <p class="text-slate-400">Website Developer | Artist | Problem Solver</p>
+    <img src="images/profile.jpg" class="profile-photo">
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section py-20 bg-slate-900 reveal">
+  <div class="section-inner grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div><h2 class="text-4xl text-blue-500 font-bold">2+</h2><p class="text-xs">Years Exp</p></div>
+    <div><h2 class="text-4xl text-blue-500 font-bold">10+</h2><p class="text-xs">Projects</p></div>
+    <div><h2 class="text-4xl text-blue-500 font-bold">1+</h2><p class="text-xs">Clients</p></div>
+    <div><h2 class="text-4xl text-blue-500 font-bold">100%</h2><p class="text-xs">Commitment</p></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section py-24 reveal">
+  <div class="section-inner">
+    <h2 class="text-3xl font-bold mb-12">What I Do</h2>
+    <div class="grid md:grid-cols-3 gap-8 justify-items-center">
+      <div class="card p-8 rounded-xl text-center">
+        <i class="fas fa-code text-blue-500 text-3xl mb-4"></i>
+        <h3 class="font-bold">Web Development</h3>
+      </div>
+      <div class="card p-8 rounded-xl text-center">
+        <i class="fas fa-mobile-alt text-blue-500 text-3xl mb-4"></i>
+        <h3 class="font-bold">No Code Apps</h3>
+      </div>
+      <div class="card p-8 rounded-xl text-center">
+        <i class="fas fa-lightbulb text-blue-500 text-3xl mb-4"></i>
+        <h3 class="font-bold">Drawing</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume" class="section py-24 bg-slate-900/50 reveal">
+  <div class="section-inner grid md:grid-cols-2 gap-16 md:text-left">
+    <div>
+      <h2 class="text-3xl font-bold mb-8">Education</h2>
+      <p class="font-bold">BCA Student</p>
+      <p class="text-slate-400 text-sm">Mar Augusthinose College</p>
+    </div>
+    <div>
+      <h2 class="text-3xl font-bold mb-8">Skills</h2>
+      <div class="mb-4">
+        <div class="flex justify-between text-sm"><span>HTML</span><span>95%</span></div>
+        <div class="skill-bar"><div class="skill-progress" style="width:95%"></div></div>
+      </div>
+      <div class="mb-4">
+        <div class="flex justify-between text-sm"><span>Python</span><span>85%</span></div>
+        <div class="skill-bar"><div class="skill-progress" style="width:85%"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-sm"><span>MS Office</span><span>80%</span></div>
+        <div class="skill-bar"><div class="skill-progress" style="width:80%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section py-24 reveal">
+  <div class="section-inner">
+    <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
+    <p class="text-blue-500 font-bold mb-6">brianbenny706@gmail.com</p>
+    <div class="flex justify-center space-x-6 text-2xl">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+    </div>
+  </div>
+</section>
+
+<footer class="py-8 border-t border-slate-800 text-center text-xs text-slate-500">
+© 2024 Brian Benny
+</footer>
+
+</div>
+
+<script>
+window.addEventListener("load",()=>{
+  loader.style.opacity="0";
+  setTimeout(()=>loader.style.display="none",600);
+});
+
+function toggleTheme(){
+  document.body.classList.toggle("light");
+  themeIcon.classList.toggle("fa-moon");
+  themeIcon.classList.toggle("fa-sun");
+}
+
+function toggleMenu(){mobileMenu.classList.toggle("active")}
+
+/* Parallax */
+window.addEventListener("scroll",()=>{
+  document.querySelectorAll(".parallax-text")
+    .forEach(el=>el.style.transform=`translateY(${scrollY*.25}px)`);
+});
+
+/* Reveal */
+document.querySelectorAll(".reveal").forEach(el=>{
+  if(el.getBoundingClientRect().top<innerHeight-100)el.classList.add("active");
+});
+window.addEventListener("scroll",()=>{
+  document.querySelectorAll(".reveal").forEach(el=>{
+    if(el.getBoundingClientRect().top<innerHeight-100)el.classList.add("active");
+  });
+});
+
+/* Cursor glow */
+const glow=document.querySelector(".cursor-glow");
+window.addEventListener("mousemove",e=>{
+  glow.style.left=e.clientX+"px";
+  glow.style.top=e.clientY+"px";
+});
+</script>
+
+</body>
+</html>
